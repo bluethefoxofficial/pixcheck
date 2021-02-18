@@ -21,6 +21,7 @@ namespace pixcheck
         private void timer1_Tick(object sender, EventArgs e)
         {
             pictureBox1.Left = Cursor.Position.X;
+            Cursor.Hide();
             pictureBox1.Top = Cursor.Position.Y;
         }
 
@@ -72,10 +73,20 @@ namespace pixcheck
             {
                 pictureBox1.BackColor = Color.Blue;
             }
+            if (e.KeyCode == Keys.A)
+            {
+                autotest();
+            }
+            if(e.KeyCode == Keys.Z)
+            {
+                autotestandfix();
+            }
             if (e.KeyCode == Keys.W)
             {
                 pictureBox1.BackColor = Color.White;
             }
+
+            //Repair mode
             if (e.KeyCode == Keys.Q)
             {
                 MessageBox.Show("REPAIR MODE THIS WILL CAUSE FLASHING LOOK AWAY AFTER HITTING OK YOU HAVE BEEN WARNED", "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,15 +133,65 @@ namespace pixcheck
             }
             num++;
             label1.Text = num.ToString();
-            if(num == 360000000)
+            if(num == 3601)
             {
                 timer2.Stop();
+                MessageBox.Show("REPAIR COMPLETE PLEASE CHECK TO SEE IF THE ISSUE IS RESOLVED IF NOT TRY AGAIN AND IF THE ISSUE ISNT GONE CALL THE MANUFACTURE.");
+                MessageBox.Show("Pixcheck will now close.");
+                Application.Exit();
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Does nothing.
+        }
+        //
+        // Autotest script
+        //
+        protected private void autotest()
+        {
+            MessageBox.Show("Autotest start");
+            timer1.Stop();
+            this.BackColor = Color.Black;
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Location = new Point(0,0);
+            pictureBox1.Width = this.Width;
+            pictureBox1.Height = 40;
+            MessageBox.Show("if you see a white bar on top and no other pixels are showing another colour then this part of the test is complete we will now do it for all 3 colours.");
+            pictureBox1.BackColor = Color.Red;
+            MessageBox.Show("If you see a red bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.BackColor = Color.Green;
+            MessageBox.Show("If you see a green bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.BackColor = Color.Blue;
+            MessageBox.Show("If you see a blue bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.Height = this.Height;
+            pictureBox1.Width = 40;
+            pictureBox1.BackColor = Color.White;
+            MessageBox.Show("if you see a white bar on the side and no other pixels are showing another colour then this part of the test is complete we will now do it for all 3 colours.");
+            pictureBox1.BackColor = Color.Red;
+            MessageBox.Show("If you see a red bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.BackColor = Color.Green;
+            MessageBox.Show("If you see a green bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.BackColor = Color.Blue;
+            MessageBox.Show("If you see a blue bar with no issues then the screen is working properly when displaying that colour.");
+            pictureBox1.BackColor = Color.White;
+            MessageBox.Show("move the square with your mouse and when youre done you can fix with Q or quit with escape, testing the whole screen with a mouse and press R to set it to red G to set it to green and B to get it to blue and W to set it to white to get help press H on your keyboard.");
+            pictureBox1.Location = new Point(this.Width / 2, this.Height / 2);
+            pictureBox1.Height = 40;
+            //Cursor.Show();
+            timer1.Start();
+        }
+        //
+        // Autotest & fix script
+        //
+        protected private void autotestandfix()
+        {
+            //redundent.
+        }
 
+        private void timer3_Tick(object sender, EventArgs e)
+        {
         }
     }
 }

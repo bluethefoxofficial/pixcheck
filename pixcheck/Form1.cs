@@ -67,7 +67,7 @@ namespace pixcheck
             }
             if (e.KeyCode == Keys.H)
             {
-                MessageBox.Show("Help box for Pixcheck and fix\nLeft arrow - make box wider\nRight arrow - make box thinner\nUp arrow - make box taller\nDown arrow - make box smaller\nR - set box colour to red\nG-set box colour to green\nB - set box color to blue\nW - set box to white\nEsc - Exit application\nQ - attempt repair \nO - repair frame counter\nH - help box");
+                MessageBox.Show("Help box for Pixcheck and fix\nLeft arrow - make box wider\nRight arrow - make box thinner\nUp arrow - make box taller\nDown arrow - make box smaller\nR - set box colour to red\nG-set box colour to green\nB - set box color to blue\nW - set box to white\nEsc - Exit application\nQ - attempt repair \nO - repair frame counter\nH - help box\n A - autotest");
             }
             if (e.KeyCode == Keys.B)
             {

@@ -176,6 +176,12 @@ namespace pixcheck
                     pictureBox1.Show();
                 }
             }
+            else
+            {
+                Cursor.Hide();
+                timer1.Start();
+                pictureBox1.Show();
+            }
         
 
         }

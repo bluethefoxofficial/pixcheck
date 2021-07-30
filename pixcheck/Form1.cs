@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,13 +16,13 @@ namespace pixcheck
         public Form1()
         {
             InitializeComponent();
-            timer1.Start();
+            label2.Hide();
         }
         int num;
         private void timer1_Tick(object sender, EventArgs e)
         {
             pictureBox1.Left = Cursor.Position.X;
-            Cursor.Hide();
+          
             pictureBox1.Top = Cursor.Position.Y;
         }
 
@@ -73,6 +74,10 @@ namespace pixcheck
             {
                 pictureBox1.BackColor = Color.Blue;
             }
+            if (e.KeyCode == Keys.Delete)
+            {
+                MessageBox.Show("You cant delete the colour-box sorry :(");
+            }
             if (e.KeyCode == Keys.A)
             {
                 autotest();
@@ -89,7 +94,17 @@ namespace pixcheck
             //Repair mode
             if (e.KeyCode == Keys.Q)
             {
-                MessageBox.Show("REPAIR MODE THIS WILL CAUSE FLASHING LOOK AWAY AFTER HITTING OK YOU HAVE BEEN WARNED", "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //label2.Show();
+                label2.Text = "3";
+                MessageBox.Show("REPAIR MODE THIS WILL CAUSE FLASHING YOU WILL HAVE 3 SECONDS TO LOOK AWAY IF YOU ARE AT RISK OF A SEIZURE.", "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Thread.Sleep(1000);
+                label2.Text = "2";
+                Thread.Sleep(1000);
+            
+                label2.Text = "1";
+                Thread.Sleep(1000);
+               // label2.Hide();
                 timer2.Start();
                 timer1.Stop();
                 pictureBox1.Visible = false;
@@ -144,38 +159,66 @@ namespace pixcheck
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Does nothing.
+            //Does something.
+            pictureBox1.Hide();
+            if (Properties.Settings.Default.welcome)
+            {
+                if (new Welcome().ShowDialog() == DialogResult.OK)
+                {
+                    Cursor.Hide();
+                    timer1.Start();
+                    pictureBox1.Show();
+                }
+                else
+                {
+                    Cursor.Hide();
+                    timer1.Start();
+                    pictureBox1.Show();
+                }
+            }
+        
+
         }
         //
         // Autotest script
         //
         protected private void autotest()
         {
-            MessageBox.Show("Autotest start");
+            int sleep = 500;
+            MessageBox.Show("Autotest start Please follow the instructions carefully.");
             timer1.Stop();
             this.BackColor = Color.Black;
             pictureBox1.BackColor = Color.White;
             pictureBox1.Location = new Point(0,0);
             pictureBox1.Width = this.Width;
             pictureBox1.Height = 40;
+            Thread.Sleep(sleep);
             MessageBox.Show("if you see a white bar on top and no other pixels are showing another colour then this part of the test is complete we will now do it for all 3 colours.");
             pictureBox1.BackColor = Color.Red;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a red bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.BackColor = Color.Green;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a green bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.BackColor = Color.Blue;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a blue bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.Height = this.Height;
             pictureBox1.Width = 40;
             pictureBox1.BackColor = Color.White;
+            Thread.Sleep(sleep);
             MessageBox.Show("if you see a white bar on the side and no other pixels are showing another colour then this part of the test is complete we will now do it for all 3 colours.");
             pictureBox1.BackColor = Color.Red;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a red bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.BackColor = Color.Green;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a green bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.BackColor = Color.Blue;
+            Thread.Sleep(sleep);
             MessageBox.Show("If you see a blue bar with no issues then the screen is working properly when displaying that colour.");
             pictureBox1.BackColor = Color.White;
+            Thread.Sleep(300);
             MessageBox.Show("move the square with your mouse and when youre done you can fix with Q or quit with escape, testing the whole screen with a mouse and press R to set it to red G to set it to green and B to get it to blue and W to set it to white to get help press H on your keyboard.");
             pictureBox1.Location = new Point(this.Width / 2, this.Height / 2);
             pictureBox1.Height = 40;

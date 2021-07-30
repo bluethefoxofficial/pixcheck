@@ -54,6 +54,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Typesofpixels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Typesofpixels.Designer.cs">
+      <DependentUpon>Typesofpixels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,7 +77,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Typesofpixels.resx">
+      <DependentUpon>Typesofpixels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +97,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixcheck_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stuck pixel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dead pixel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\normal pixel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\strange pixel.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

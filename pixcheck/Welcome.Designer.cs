@@ -115,6 +115,7 @@ namespace pixcheck
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Dont show again";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // label3
             // 

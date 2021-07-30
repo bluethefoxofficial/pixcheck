@@ -26,13 +26,20 @@ namespace pixcheck
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            try
             {
-                Properties.Settings.Default.welcome = false;
-                Properties.Settings.Default.Save();
-            }
+                if (checkBox1.Checked)
+                {
+                    Properties.Settings.Default.welcome = false;
+                    Properties.Settings.Default.Save();
+                }
 
-            this.Close();
+                this.Close();
+            }
+            catch
+            {
+                this.Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

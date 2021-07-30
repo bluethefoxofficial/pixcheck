@@ -171,9 +171,33 @@ namespace pixcheck
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Does something.
-            pictureBox1.Hide();
-            if (Properties.Settings.Default.welcome)
+            try
+            {
+                //Does something.
+                pictureBox1.Hide();
+                if (Properties.Settings.Default.welcome)
+                {
+                    if (new Welcome().ShowDialog() == DialogResult.OK)
+                    {
+                        Cursor.Hide();
+                        timer1.Start();
+                        pictureBox1.Show();
+                    }
+                    else
+                    {
+                        Cursor.Hide();
+                        timer1.Start();
+                        pictureBox1.Show();
+                    }
+                }
+                else
+                {
+                    Cursor.Hide();
+                    timer1.Start();
+                    pictureBox1.Show();
+                }
+            }
+            catch 
             {
                 if (new Welcome().ShowDialog() == DialogResult.OK)
                 {
@@ -188,13 +212,6 @@ namespace pixcheck
                     pictureBox1.Show();
                 }
             }
-            else
-            {
-                Cursor.Hide();
-                timer1.Start();
-                pictureBox1.Show();
-            }
-        
 
         }
         //

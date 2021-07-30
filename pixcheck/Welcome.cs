@@ -39,5 +39,10 @@ namespace pixcheck
         {
             new Typesofpixels().ShowDialog();
         }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

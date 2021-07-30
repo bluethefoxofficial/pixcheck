@@ -8,6 +8,7 @@ using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace pixcheck
 {
@@ -68,7 +69,7 @@ namespace pixcheck
             }
             if (e.KeyCode == Keys.H)
             {
-                MessageBox.Show("Help box for Pixcheck and fix\nLeft arrow - make box wider\nRight arrow - make box thinner\nUp arrow - make box taller\nDown arrow - make box smaller\nR - set box colour to red\nG-set box colour to green\nB - set box color to blue\nW - set box to white\nEsc - Exit application\nQ - attempt repair \nO - repair frame counter\nH - help box\n A - autotest");
+                MessageBox.Show("Help box for Pixcheck and fix\nD - Brings you to the donation page for pixcheck if you want to support the developer.\nT - Opens the types of pixels dialog.\nLeft arrow - make box wider\nRight arrow - make box thinner\nUp arrow - make box taller\nDown arrow - make box smaller\nR - set box colour to red\nG-set box colour to green\nB - set box color to blue\nW - set box to white\nEsc - Exit application\nQ - attempt repair \nO - repair frame counter\nH - help box\n A - autotest");
             }
             if (e.KeyCode == Keys.B)
             {
@@ -82,9 +83,20 @@ namespace pixcheck
             {
                 autotest();
             }
-            if(e.KeyCode == Keys.Z)
+            if (e.KeyCode == Keys.Z)
             {
                 autotestandfix();
+            }
+            if (e.KeyCode == Keys.T)
+            {
+                Cursor.Show();
+                new Typesofpixels().ShowDialog();
+                Cursor.Hide();
+            }
+            if (e.KeyCode == Keys.D)
+            {
+                MessageBox.Show("Opening in browser dont worry you can return to pixcheck at anytime the application has not been closed.");
+                Process.Start("https://paypal.me/bluethefox");
             }
             if (e.KeyCode == Keys.W)
             {
